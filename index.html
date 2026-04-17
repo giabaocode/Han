@@ -2,1135 +2,927 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Một điều dễ thương dành cho em</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Món nhỏ xinh cho chị</title>
     <style>
       :root {
-        --bg1: #fff6f9;
-        --bg2: #ffe8ef;
+        --bg1: #fff7fb;
+        --bg2: #f7f4ff;
+        --bg3: #f4f4f5;
+        --text: #18181b;
+        --muted: #71717a;
         --card: rgba(255, 255, 255, 0.78);
-        --text: #2f2a31;
-        --muted: #6f6570;
-        --primary: #ff5c8a;
-        --primary-2: #ff8daf;
-        --line: rgba(255, 92, 138, 0.12);
-        --shadow: 0 20px 60px rgba(255, 92, 138, 0.14);
-        --radius-xl: 28px;
-        --radius-lg: 22px;
+        --border: rgba(255, 255, 255, 0.72);
+        --shadow: 0 18px 50px rgba(24, 24, 27, 0.1);
       }
 
       * {
         box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
       }
 
-      html {
-        scroll-behavior: smooth;
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+          "Segoe UI", sans-serif;
+        color: var(--text);
+        background: radial-gradient(
+          circle at top,
+          #ffffff 0%,
+          var(--bg1) 28%,
+          var(--bg2) 62%,
+          var(--bg3) 100%
+        );
       }
 
       body {
-        margin: 0;
-        font-family:
-          "Segoe UI",
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Helvetica Neue",
-          sans-serif;
-        color: var(--text);
-        background:
-          radial-gradient(circle at top left, #ffd6e2 0, transparent 25%),
-          radial-gradient(circle at bottom right, #ffdce8 0, transparent 28%),
-          linear-gradient(180deg, var(--bg1), #fff, #fffafc);
         overflow-x: hidden;
       }
 
-      .container {
-        width: min(1120px, calc(100% - 32px));
-        margin: 0 auto;
+      button,
+      input {
+        font: inherit;
       }
 
-      .badge,
-      .chip,
-      .btn,
-      .dot,
-      .thumb,
-      .note,
-      .reason,
-      .stat,
-      .playlist-item,
-      .letter-box,
-      .hero-card,
-      .final-card {
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+      .hidden {
+        display: none !important;
       }
 
-      .hero {
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        padding: 32px 0 24px;
-        position: relative;
-      }
-
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 1.05fr 0.95fr;
-        gap: 28px;
+      .lock-screen {
+        min-height: 100dvh;
+        padding: calc(26px + env(safe-area-inset-top)) 18px
+          calc(22px + env(safe-area-inset-bottom));
+        display: flex;
         align-items: center;
+        justify-content: center;
       }
 
-      .badge {
+      .lock-card {
+        width: min(100%, 390px);
+        border: 1px solid var(--border);
+        border-radius: 32px;
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 24px 60px rgba(24, 24, 27, 0.12);
+        padding: 26px 18px 20px;
+        text-align: center;
+      }
+
+      .top-pill {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
-        background: rgba(255, 255, 255, 0.8);
-        border: 1px solid var(--line);
-        color: var(--primary);
-        padding: 12px 16px;
+        gap: 8px;
+        min-height: 36px;
+        padding: 0 14px;
         border-radius: 999px;
-        box-shadow: 0 10px 30px rgba(255, 92, 138, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.82);
+        background: rgba(255, 255, 255, 0.74);
+        box-shadow: 0 12px 28px rgba(24, 24, 27, 0.06);
+        font-size: 12px;
+        color: #52525b;
+      }
+
+      .lock-icon {
+        width: 76px;
+        height: 76px;
+        margin: 16px auto 14px;
+        display: grid;
+        place-items: center;
+        border-radius: 26px;
+        background: linear-gradient(
+          135deg,
+          #ffe6ef 0%,
+          #fff4f8 52%,
+          #f0ebff 100%
+        );
+        box-shadow: 0 16px 30px rgba(24, 24, 27, 0.08);
+        font-size: 34px;
+      }
+
+      .lock-title,
+      .title,
+      .panel-title,
+      .mood-title {
+        letter-spacing: -0.04em;
+        color: var(--text);
+      }
+
+      .lock-title {
+        margin: 0;
+        font-size: 31px;
+        line-height: 1.06;
+      }
+
+      .lock-desc,
+      .desc,
+      .guide,
+      .panel-note,
+      .secret,
+      .mood-subtitle,
+      .chat-wrap,
+      .scroll-note {
+        color: #52525b;
+      }
+
+      .lock-desc {
+        margin: 10px auto 0;
+        max-width: 290px;
         font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .input-wrap {
+        margin-top: 18px;
+        text-align: left;
+      }
+
+      .field-label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 13px;
+        color: #52525b;
+      }
+
+      .password-box {
+        width: 100%;
+        min-height: 54px;
+        border: 1px solid rgba(228, 228, 231, 0.9);
+        border-radius: 18px;
+        padding: 0 16px;
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--text);
+        outline: none;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      }
+
+      .password-box:focus {
+        border-color: rgba(244, 114, 182, 0.38);
+        box-shadow: 0 0 0 4px rgba(244, 114, 182, 0.08);
+      }
+
+      .password-hint {
+        margin-top: 12px;
+        padding: 14px;
+        border-radius: 18px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 237, 243, 0.95) 0%,
+          rgba(246, 244, 255, 0.95) 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.78);
+        font-size: 13px;
+        line-height: 1.7;
+        color: #52525b;
+      }
+
+      .password-hint strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--text);
+        font-size: 14px;
+      }
+
+      .hint-code {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 8px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.9);
+        font-weight: 700;
+        color: #db2777;
+        letter-spacing: 0.01em;
+      }
+
+      .unlock-btn,
+      .start-btn,
+      .close-btn {
+        border: none;
+        cursor: pointer;
+        border-radius: 999px;
+        background: #18181b;
+        color: #fff;
+        box-shadow: 0 16px 30px rgba(24, 24, 27, 0.18);
+      }
+
+      .unlock-btn {
+        width: 100%;
+        min-height: 54px;
+        margin-top: 14px;
         font-weight: 600;
       }
 
-      .title {
-        margin: 18px 0 14px;
-        font-size: clamp(38px, 7vw, 72px);
-        line-height: 1.05;
-        letter-spacing: -0.03em;
+      .lock-error {
+        min-height: 20px;
+        margin-top: 10px;
+        font-size: 13px;
+        color: #e11d48;
       }
 
-      .title span {
+      .site-shell {
+        display: none;
+      }
+
+      .site-shell.show {
         display: block;
-        color: var(--primary);
       }
 
-      .subtitle {
-        margin: 0;
-        max-width: 620px;
-        color: var(--muted);
-        font-size: 18px;
-        line-height: 1.8;
+      .app {
+        width: 100%;
+        max-width: 430px;
+        min-height: 100dvh;
+        margin: 0 auto;
+        padding: calc(18px + env(safe-area-inset-top)) 16px
+          calc(28px + env(safe-area-inset-bottom));
       }
 
-      .actions {
+      .pill-row {
         display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 28px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 14px;
       }
 
-      .btn {
-        border: 0;
+      .ghost-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 36px;
+        padding: 0 14px;
         border-radius: 999px;
-        padding: 14px 22px;
-        font-size: 15px;
-        font-weight: 700;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.68);
+        box-shadow: 0 10px 30px rgba(24, 24, 27, 0.06);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        font-size: 12px;
+        color: #3f3f46;
         cursor: pointer;
-        transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease,
-          opacity 0.2s ease;
       }
 
-      .btn:hover {
-        transform: translateY(-2px);
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, var(--primary), var(--primary-2));
-        color: white;
-        box-shadow: 0 18px 40px rgba(255, 92, 138, 0.28);
-      }
-
-      .btn-secondary {
-        background: rgba(255, 255, 255, 0.8);
-        color: var(--text);
-        border: 1px solid var(--line);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
-      }
-
-      .stats {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-        margin-top: 28px;
-      }
-
-      .stat {
+      .hero {
+        overflow: hidden;
+        border-radius: 30px;
+        border: 1px solid var(--border);
         background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: var(--radius-lg);
-        padding: 18px;
         box-shadow: var(--shadow);
       }
 
-      .stat-icon {
-        width: 42px;
-        height: 42px;
+      .hero-top {
+        padding: 26px 20px 22px;
+        background: linear-gradient(
+          135deg,
+          #ffe4ee 0%,
+          #fff3f8 45%,
+          #f1ecff 100%
+        );
+      }
+
+      .mail-icon {
+        width: 68px;
+        height: 68px;
+        margin: 0 auto 14px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.84);
         display: grid;
         place-items: center;
-        border-radius: 16px;
-        background: #ffe0ea;
-        color: var(--primary);
-        font-size: 18px;
-        margin-bottom: 10px;
+        box-shadow: 0 12px 26px rgba(24, 24, 27, 0.08);
+        font-size: 30px;
       }
 
-      .stat-label {
+      .title {
+        text-align: center;
+        font-size: 32px;
+        line-height: 1.06;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .desc {
+        max-width: 290px;
+        margin: 12px auto 0;
+        text-align: center;
         font-size: 14px;
-        color: var(--muted);
-        margin-bottom: 4px;
+        line-height: 1.7;
       }
 
-      .stat-value {
-        font-size: 18px;
-        font-weight: 800;
+      .start-wrap {
+        margin-top: 22px;
+        display: flex;
+        justify-content: center;
       }
 
-      .hero-card {
-        background: rgba(255, 255, 255, 0.72);
-        border: 1px solid rgba(255, 255, 255, 0.85);
-        border-radius: 32px;
-        padding: 14px;
-        box-shadow: 0 30px 80px rgba(255, 92, 138, 0.18);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero-card::before,
-      .hero-card::after {
-        content: "";
-        position: absolute;
-        border-radius: 999px;
-        filter: blur(34px);
-        z-index: 0;
-        opacity: 0.65;
-      }
-
-      .hero-card::before {
-        width: 180px;
-        height: 180px;
-        background: rgba(255, 160, 187, 0.4);
-        top: -30px;
-        left: -40px;
-      }
-
-      .hero-card::after {
-        width: 200px;
-        height: 200px;
-        background: rgba(255, 204, 220, 0.55);
-        bottom: -50px;
-        right: -50px;
-      }
-
-      .slider {
-        position: relative;
-        z-index: 1;
-      }
-
-      .slide-wrap {
-        position: relative;
-        aspect-ratio: 4 / 5;
-        border-radius: 26px;
-        overflow: hidden;
-        background: #f9dbe5;
-      }
-
-      .slide-wrap img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
+      .start-btn {
+        min-height: 52px;
+        padding: 0 22px;
+        font-size: 16px;
+        font-weight: 600;
         transition:
-          opacity 0.45s ease,
-          transform 0.45s ease;
+          transform 0.18s ease,
+          opacity 0.18s ease;
       }
 
-      .slide-caption {
-        position: absolute;
-        inset: auto 0 0 0;
-        padding: 26px 22px 20px;
-        background: linear-gradient(
-          180deg,
-          transparent,
-          rgba(0, 0, 0, 0.18),
-          rgba(0, 0, 0, 0.56)
-        );
-        color: white;
+      .start-btn:active,
+      .ghost-btn:active,
+      .mood-btn:active,
+      .unlock-btn:active,
+      .close-btn:active {
+        transform: scale(0.98);
       }
 
-      .slide-caption strong {
+      .guide {
+        display: none;
+        margin-top: 18px;
+        padding: 16px;
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.68);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .guide.show {
         display: block;
-        font-size: 22px;
-        line-height: 1.35;
+        animation: fadeUp 0.45s ease both;
+      }
+
+      .guide strong,
+      .secret strong,
+      .panel-meta strong {
+        color: var(--text);
+      }
+
+      .guide strong {
+        display: block;
         margin-bottom: 6px;
       }
 
-      .slide-caption span {
-        color: rgba(255, 255, 255, 0.85);
-        font-size: 14px;
+      .moods {
+        display: none;
+        margin-top: 16px;
+        gap: 12px;
+        flex-direction: column;
       }
 
-      .slider-controls {
+      .moods.show {
+        display: flex;
+      }
+
+      .mood-block {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .mood-btn {
+        width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 26px;
+        padding: 16px 16px;
+        text-align: left;
+        cursor: pointer;
+        box-shadow: 0 16px 28px rgba(24, 24, 27, 0.08);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
         display: flex;
         justify-content: space-between;
-        gap: 12px;
         align-items: center;
-        margin-top: 14px;
+        gap: 14px;
       }
 
-      .control-btn {
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.82);
-        color: var(--text);
-        border-radius: 999px;
-        padding: 12px 16px;
-        cursor: pointer;
-        font-weight: 700;
+      .mood-btn.active {
+        box-shadow: 0 18px 34px rgba(24, 24, 27, 0.12);
+        outline: 2px solid rgba(255, 255, 255, 0.82);
       }
 
-      .dots {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        justify-content: center;
-        flex: 1;
-      }
-
-      .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
-        border: 0;
-        background: #d7c3cb;
-        cursor: pointer;
-        transition: all 0.25s ease;
-      }
-
-      .dot.active {
-        width: 30px;
-        background: var(--primary);
-      }
-
-      section.block {
-        padding: 34px 0;
-      }
-
-      .section-head {
-        margin-bottom: 18px;
-      }
-
-      .section-kicker {
-        display: inline-block;
-        padding: 8px 12px;
-        border-radius: 999px;
-        background: #fff;
-        border: 1px solid var(--line);
-        color: var(--primary);
+      .mood-label-top {
         font-size: 13px;
+        color: #52525b;
+        margin-bottom: 4px;
+      }
+
+      .mood-title {
+        font-size: 24px;
+        line-height: 1.1;
         font-weight: 700;
-        margin-bottom: 10px;
+        margin-bottom: 6px;
       }
 
-      .section-title {
-        font-size: clamp(26px, 4.5vw, 40px);
-        margin: 0 0 8px;
-        letter-spacing: -0.02em;
+      .mood-subtitle {
+        font-size: 14px;
+        line-height: 1.6;
       }
 
-      .section-subtitle {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.8;
-        max-width: 760px;
-      }
-
-      .reasons-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-        margin-top: 22px;
-      }
-
-      .reason {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: var(--radius-xl);
-        padding: 20px;
-        box-shadow: var(--shadow);
-        transform: translateY(10px);
-        opacity: 0;
-        animation: riseIn 0.7s ease forwards;
-      }
-
-      .reason:nth-child(2) {
-        animation-delay: 0.08s;
-      }
-      .reason:nth-child(3) {
-        animation-delay: 0.16s;
-      }
-      .reason:nth-child(4) {
-        animation-delay: 0.24s;
-      }
-
-      .reason-icon {
-        width: 44px;
-        height: 44px;
+      .heart-badge {
+        flex: 0 0 auto;
+        width: 48px;
+        height: 48px;
+        border-radius: 999px;
         display: grid;
         place-items: center;
-        border-radius: 16px;
-        background: #ffe6ee;
-        font-size: 18px;
-        color: var(--primary);
-        margin-bottom: 12px;
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: 0 10px 20px rgba(24, 24, 27, 0.08);
+        font-size: 22px;
       }
 
-      .reason p {
-        margin: 0;
-        line-height: 1.75;
-        color: #554b55;
+      .accent-tired {
+        background: linear-gradient(
+          135deg,
+          #ffe4e6 0%,
+          #ffeef4 54%,
+          #ffedd5 100%
+        );
       }
-
-      .dual-grid {
-        display: grid;
-        grid-template-columns: 1.12fr 0.88fr;
-        gap: 18px;
-        margin-top: 18px;
+      .accent-praised {
+        background: linear-gradient(
+          135deg,
+          #fef3c7 0%,
+          #fef9c3 54%,
+          #ffe4e6 100%
+        );
+      }
+      .accent-miss {
+        background: linear-gradient(
+          135deg,
+          #fce7f3 0%,
+          #fae8ff 54%,
+          #ede9fe 100%
+        );
+      }
+      .accent-surprise {
+        background: linear-gradient(
+          135deg,
+          #e0f2fe 0%,
+          #cffafe 54%,
+          #e0e7ff 100%
+        );
       }
 
       .panel {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 30px;
-        box-shadow: var(--shadow);
-        padding: 24px;
-      }
-
-      .panel h3 {
-        margin: 0 0 8px;
-        font-size: 28px;
-        letter-spacing: -0.02em;
-      }
-
-      .panel p.top-note {
-        margin: 0 0 18px;
-        color: var(--muted);
-        line-height: 1.75;
-      }
-
-      .playlist-item,
-      .note {
-        background: rgba(255, 255, 255, 0.82);
-        border: 1px solid rgba(255, 92, 138, 0.08);
-        border-radius: 20px;
-        padding: 16px;
-        margin-bottom: 12px;
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.03);
-      }
-
-      .playlist-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-      }
-
-      .playlist-item small,
-      .note small {
-        display: block;
-        color: var(--muted);
-        margin-top: 4px;
-      }
-
-      .chip {
-        display: inline-flex;
-        align-items: center;
-        border-radius: 999px;
-        padding: 8px 12px;
-        background: #fff2f6;
-        color: var(--primary);
-        font-size: 13px;
-        font-weight: 800;
-        white-space: nowrap;
-      }
-
-      .gallery-strip {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 12px;
-        margin-top: 22px;
-      }
-
-      .thumb {
-        position: relative;
-        aspect-ratio: 1 / 1;
-        border: 0;
-        padding: 0;
-        border-radius: 22px;
         overflow: hidden;
-        cursor: pointer;
-        box-shadow: var(--shadow);
-        background: #f8d9e4;
-      }
-
-      .thumb img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.35s ease;
-      }
-
-      .thumb:hover img {
-        transform: scale(1.06);
-      }
-
-      .thumb span {
-        position: absolute;
-        inset: auto 10px 10px 10px;
-        font-size: 12px;
-        color: white;
-        text-align: left;
-        background: rgba(0, 0, 0, 0.26);
-        padding: 7px 9px;
-        border-radius: 12px;
-      }
-
-      .final-card {
-        background: linear-gradient(135deg, #2d1220, #45263a 55%, #6c3952);
-        color: white;
-        border-radius: 34px;
-        padding: 44px 28px;
-        text-align: center;
-        box-shadow: 0 30px 80px rgba(79, 16, 45, 0.35);
-        position: relative;
-        overflow: hidden;
-        margin: 16px 0 60px;
-      }
-
-      .final-card::before,
-      .final-card::after {
-        content: "";
-        position: absolute;
-        width: 220px;
-        height: 220px;
-        border-radius: 999px;
-        filter: blur(40px);
-        opacity: 0.3;
-      }
-
-      .final-card::before {
-        top: -80px;
-        right: -40px;
-        background: #ff8daf;
-      }
-
-      .final-card::after {
-        bottom: -100px;
-        left: -60px;
-        background: #ffc6d8;
-      }
-
-      .final-card h2 {
-        font-size: clamp(28px, 5vw, 52px);
-        line-height: 1.1;
-        margin: 10px 0 14px;
-        position: relative;
-        z-index: 1;
-      }
-
-      .final-card p {
-        position: relative;
-        z-index: 1;
-        max-width: 760px;
-        margin: 0 auto;
-        color: rgba(255, 255, 255, 0.82);
-        line-height: 1.9;
-        font-size: 17px;
-      }
-
-      .final-actions {
-        position: relative;
-        z-index: 1;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-        margin-top: 28px;
-      }
-
-      .modal {
-        position: fixed;
-        inset: 0;
-        background: rgba(30, 11, 22, 0.55);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 16px;
-        z-index: 999;
-      }
-
-      .modal.show {
-        display: flex;
-        animation: fadeIn 0.25s ease;
-      }
-
-      .letter-box {
-        width: min(720px, 100%);
-        background: rgba(255, 255, 255, 0.95);
-        border: 1px solid rgba(255, 255, 255, 0.9);
-        border-radius: 30px;
-        padding: 28px;
-        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.18);
-        animation: popUp 0.28s ease;
-      }
-
-      .letter-box h3 {
-        margin: 12px 0 14px;
-        font-size: clamp(26px, 4vw, 36px);
-        letter-spacing: -0.02em;
-      }
-
-      .letter-box p {
-        margin: 0 0 14px;
-        line-height: 1.9;
-        color: #554d55;
-      }
-
-      .modal-actions {
-        display: flex;
-        justify-content: flex-end;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 18px;
-      }
-
-      .floating-hearts {
-        pointer-events: none;
-        position: fixed;
-        inset: 0;
-        overflow: hidden;
-        z-index: 0;
-      }
-
-      .heart {
-        position: absolute;
-        bottom: -40px;
-        color: rgba(255, 92, 138, 0.18);
-        animation: floatUp linear forwards;
-        user-select: none;
-      }
-
-      .helper {
-        margin-top: 12px;
-        font-size: 13px;
-        color: var(--muted);
-        line-height: 1.8;
-      }
-
-      .music-toggle {
-        position: fixed;
-        right: 18px;
-        bottom: 18px;
-        z-index: 1000;
-        border: 0;
-        border-radius: 999px;
-        padding: 14px 18px;
-        font-size: 14px;
-        font-weight: 800;
-        cursor: pointer;
-        color: white;
-        background: linear-gradient(135deg, var(--primary), var(--primary-2));
-        box-shadow: 0 18px 40px rgba(255, 92, 138, 0.28);
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(8px);
         transition:
-          transform 0.2s ease,
-          opacity 0.2s ease;
+          max-height 0.35s ease,
+          opacity 0.25s ease,
+          transform 0.25s ease;
       }
 
-      .music-toggle:hover {
-        transform: translateY(-2px);
+      .panel.open {
+        max-height: 1200px;
+        opacity: 1;
+        transform: translateY(0);
       }
 
-      .music-note {
-        margin-top: 10px;
+      .panel-card {
+        overflow: hidden;
+        border-radius: 28px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: 0 18px 40px rgba(24, 24, 27, 0.11);
+      }
+
+      .panel-top {
+        padding: 18px 18px 16px;
+      }
+
+      .panel-meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
         font-size: 13px;
-        color: var(--muted);
-        line-height: 1.8;
+        color: #52525b;
+        margin-bottom: 8px;
       }
 
-      @keyframes fadeIn {
+      .panel-title {
+        font-size: 28px;
+        line-height: 1.08;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .panel-note {
+        margin-top: 8px;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .panel-body {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .phone {
+        border-radius: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.84);
+        padding: 12px;
+        box-shadow: 0 16px 28px rgba(24, 24, 27, 0.08);
+      }
+
+      .phone-notch {
+        width: 84px;
+        height: 6px;
+        border-radius: 999px;
+        background: #e4e4e7;
+        margin: 0 auto 12px;
+      }
+
+      .chat-wrap {
+        border-radius: 22px;
+        background: #fafafa;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .bubble-row {
+        display: flex;
+        animation: fadeUp 0.38s ease both;
+      }
+
+      .bubble-row.future {
+        justify-content: flex-end;
+      }
+      .bubble-row.present {
+        justify-content: flex-start;
+      }
+
+      .bubble {
+        max-width: 85%;
+        padding: 11px 14px;
+        border-radius: 22px;
+        font-size: 14px;
+        line-height: 1.6;
+        box-shadow: 0 8px 16px rgba(24, 24, 27, 0.06);
+      }
+
+      .bubble.future {
+        background: #18181b;
+        color: #fff;
+        border-bottom-right-radius: 8px;
+      }
+
+      .bubble.present {
+        background: #fff;
+        color: #27272a;
+        border-bottom-left-radius: 8px;
+      }
+
+      .secret {
+        border-radius: 24px;
+        border: 1px dashed #e4e4e7;
+        background: #fafafa;
+        padding: 16px;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .secret strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .close-btn {
+        min-height: 42px;
+        padding: 0 16px;
+        font-size: 14px;
+        align-self: flex-start;
+      }
+
+      @keyframes fadeUp {
         from {
           opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      @keyframes popUp {
-        from {
-          transform: translateY(24px) scale(0.96);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0) scale(1);
-          opacity: 1;
-        }
-      }
-
-      @keyframes riseIn {
-        from {
           transform: translateY(10px);
-          opacity: 0;
         }
         to {
+          opacity: 1;
           transform: translateY(0);
-          opacity: 1;
         }
       }
 
-      @keyframes floatUp {
-        from {
-          transform: translateY(0) scale(1) rotate(0deg);
-          opacity: 0;
-        }
-        15% {
-          opacity: 1;
-        }
-        to {
-          transform: translateY(-110vh) scale(1.4) rotate(18deg);
-          opacity: 0;
-        }
-      }
-
-      @media (max-width: 980px) {
-        .hero-grid,
-        .dual-grid {
-          grid-template-columns: 1fr;
+      @media (max-width: 380px) {
+        .app {
+          padding-left: 12px;
+          padding-right: 12px;
         }
 
-        .stats,
-        .reasons-grid,
-        .gallery-strip {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .hero {
-          min-height: auto;
-          padding-top: 28px;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .container {
-          width: min(100% - 20px, 1120px);
-        }
-
-        .stats,
-        .reasons-grid,
-        .gallery-strip {
-          grid-template-columns: 1fr;
-        }
-
-        .subtitle {
-          font-size: 16px;
-        }
-
-        .btn,
-        .control-btn {
-          width: 100%;
-        }
-
-        .slider-controls,
-        .actions,
-        .final-actions,
-        .modal-actions {
-          flex-direction: column;
+        .lock-title,
+        .title,
+        .mood-title,
+        .panel-title {
+          font-size: 28px;
         }
       }
     </style>
   </head>
   <body>
-    <div class="floating-hearts" id="floatingHearts"></div>
-
-    <main>
-      <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <div class="badge">✨ Một chiếc web nho nhỏ dành cho chị</div>
-            <h1 class="title">
-              Chị ơi,
-              <span>em làm thử một chiếc web nhỏ cho chị xem vui</span>
-            </h1>
-            <p class="subtitle">
-              Em làm trang này chỉ để chị xem cho vui vui hoi. Không quá cầu kỳ,
-              chỉ là vài tấm ảnh xinh của chị em trộm trên Insta hehee.
-            </p>
-
-            <div class="actions">
-              <button class="btn btn-primary" onclick="scrollToGallery()">
-                Xem thử nha
-              </button>
-              <button class="btn btn-secondary" onclick="openLetter()">
-                Bấm thử nè
-              </button>
-            </div>
-
-            <div class="stats">
-              <div class="stat">
-                <div class="stat-icon">📷</div>
-                <div class="stat-label">Ảnh dùng</div>
-                <div class="stat-value" id="photoCount">6 tấm</div>
-              </div>
-              <div class="stat">
-                <div class="stat-icon">✨</div>
-                <div class="stat-label">Mục tiêu</div>
-                <div class="stat-value">Cho chị vui</div>
-              </div>
-              <div class="stat">
-                <div class="stat-icon">🎁</div>
-                <div class="stat-label">Tinh thần</div>
-                <div class="stat-value">Ngẫu hứng nhưng có tâm</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-card">
-            <div class="slider">
-              <div class="slide-wrap">
-                <img id="mainPhoto" src="photos/1.jpg" alt="Ảnh của chị" />
-                <div class="slide-caption">
-                  <strong id="mainCaption">Tấm này nhìn có vibe thật sự</strong>
-                  <span
-                    >Xem ảnh thôi cũng đủ thấy chị rất có năng lượng
-                    riêng.</span
-                  >
-                </div>
-              </div>
-              <div class="slider-controls">
-                <button class="control-btn" onclick="prevPhoto()">
-                  Ảnh trước
-                </button>
-                <div class="dots" id="dots"></div>
-                <button class="control-btn" onclick="nextPhoto()">
-                  Ảnh sau
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="block">
-        <div class="container">
-          <div class="section-head">
-            <div class="section-kicker">🌤️ Một vài điều em thấy vui</div>
-            <h2 class="section-title">
-              Vài lý do khiến em muốn làm chiếc web này
-            </h2>
-            <p class="section-subtitle">
-              Không phải kiểu nghiêm túc gì đâu, chỉ là vài điều em thấy ở chị
-              khá dễ thương nên đem lên đây cho vui.
-            </p>
-          </div>
-
-          <div class="reasons-grid">
-            <div class="reason">
-              <div class="reason-icon">📸</div>
-              <p>
-                Vì ảnh nào của chị nhìn cũng có một kiểu rất riêng, xem là nhận
-                ra ngay.
-              </p>
-            </div>
-            <div class="reason">
-              <div class="reason-icon">💬</div>
-              <p>
-                Vì cách chị nói chuyện mấy hôm nay làm cuộc trò chuyện tự nhiên
-                vui hơn hẳn.
-              </p>
-            </div>
-            <div class="reason">
-              <div class="reason-icon">✨</div>
-              <p>
-                Vì chị có vibe kiểu vừa nhẹ nhàng vừa thú vị, nên em mới nổi
-                hứng code cái này.
-              </p>
-            </div>
-            <div class="reason">
-              <div class="reason-icon">😌</div>
-              <p>
-                Vì em nghĩ nhận được một chiếc web mini chắc cũng là trải nghiệm
-                hơi lạ hen.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="block" id="gallery">
-        <div class="container">
-          <div class="section-head">
-            <div class="section-kicker">📸 Góc ảnh xinh xinh</div>
-            <h2 class="section-title">Một vài tấm ảnh em thấy rất có vibe</h2>
-          </div>
-
-          <div class="gallery-strip" id="thumbs"></div>
-        </div>
-      </section>
-
-      <section class="block">
-        <div class="container dual-grid">
-          <div class="panel">
-            
-
-          <div class="panel">
-            <h3>Mấy câu em viết cho vui</h3>
-
-            <div class="note">
-              <strong
-                >“Em code cái này chủ yếu vì thấy ý tưởng này chắc
-                chị sẽ bất ngờ.”</strong
-              >
-            </div>
-            <div class="note">
-              <strong
-                >“Nói chuyện mới mấy hôm mà em đã có cảm hứng ngồi làm hẳn một
-                cái web mini rồi.”</strong
-              >
-            </div>
-            <div class="note">
-              <strong
-                >“Hy vọng chị bấm qua bấm lại xong thấy nó cũng vui vui một
-                chút.”</strong
-              >
-            </div>
-            <div class="note">
-              <strong
-                >“Nếu chiếc web này làm chị cười 2 giây thì coi như em
-                thắng.”</strong
-              >
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="block">
-        <div class="container">
-          <div class="final-card">
-            <div
-              class="section-kicker"
-              style="
-                background: rgba(255, 255, 255, 0.1);
-                border-color: rgba(255, 255, 255, 0.16);
-                color: #ffd6e2;
-              "
-            >
-              🎉 Đến đoạn cuối rồi nè
-            </div>
-            <h2>
-              Vậy thôi, em làm chiếc này chỉ để chị có cái gì đó vui vui để xem
-            </h2>
-            <p>
-              Nó không phải món quà gì to tát, chỉ là một ý tưởng nảy ra khá
-              ngẫu hứng. Nếu chị xem tới đây và thấy hơi bất ngờ hoặc bật cười
-              nhẹ một cái, thì coi như chiếc web này đã hoàn thành nhiệm vụ rồi.
-            </p>
-            <div class="final-actions">
-              <button class="btn btn-primary" onclick="openLetter()">
-                Bấm thêm cái nữa nè
-              </button>
-              <button
-                class="btn btn-secondary"
-                onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-              >
-                Xem lại từ đầu
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <audio id="bgMusic" loop>
-      <source src="song.mp3" type="audio/mpeg" />
-    </audio>
-
-    <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">
-      🎵 Bật nhạc
-    </button>
-
-    <div class="modal" id="letterModal" onclick="closeLetter(event)">
-      <div class="letter-box">
-        <div class="badge">💬 Một lời nhắn nhỏ</div>
-        <h3>Gửi chị — người vừa được em code web tặng</h3>
-        <p>
-          Em không biết chị có bất ngờ thật không, nhưng em đoán là ít ai đang
-          nhắn tin mấy ngày lại nhận được hẳn một chiếc web như này.
+    <section class="lock-screen" id="lockScreen">
+      <div class="lock-card">
+        <div class="top-pill">💌 em gửi chị cái này</div>
+        <div class="lock-icon">🔐</div>
+        <h1 class="lock-title">Mở cửa nhẹ xíu nè</h1>
+        <p class="lock-desc">
+          Em làm cái này riêng cho chị nên em khóa lại một xíu cho đáng yêu
+          thôi.
         </p>
-        <p>
-          Không phải vì chuyện gì quá sâu sắc đâu, chỉ là em thấy chị có vibe dễ
-          thương nên muốn làm cái gì đó hơi khác bình thường một chút.
-        </p>
-        <p>
-          Tóm lại là: em làm vì thấy vui, và cũng mong chị xem xong thấy vui.
-          Hết rồi đó, nhưng chị có thể bấm qua lại thêm vài lần nếu muốn chấm
-          điểm cho em.
-        </p>
-        <div class="modal-actions">
-          <button class="btn btn-secondary" onclick="hideLetter()">
-            Đóng lại
+
+        <div class="input-wrap">
+          <label class="field-label" for="passwordInput"
+            >Nhập mật khẩu đi chị</label
+          >
+          <input
+            id="passwordInput"
+            class="password-box"
+            type="text"
+            autocomplete="off"
+            placeholder="mật khẩu ở ngay dưới nè"
+          />
+
+          <div class="password-hint">
+            <strong>Gợi ý cho chị nè</strong>
+            Em để luôn ở đây cho chị khỏi phải đoán nhiều.
+            <div class="hint-code">Chị Hân So Cute</div>
+          </div>
+
+          <button class="unlock-btn" id="unlockBtn" type="button">
+            mở cho em xem nè →
           </button>
-          <button class="btn btn-primary" onclick="hideLetter()">
-            Ok em có tâm 😌
-          </button>
+          <div class="lock-error" id="lockError"></div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <main class="site-shell" id="siteShell">
+      <div class="app">
+        <div class="pill-row">
+          <div class="top-pill">✨ món nhỏ xinh cho chị</div>
+          <button class="ghost-btn" id="resetBtn" type="button">
+            ↺ mở lại từ đầu
+          </button>
+        </div>
+
+        <section class="hero">
+          <div class="hero-top">
+            <div class="mail-icon">💌</div>
+            <h1 class="title">Món nhỏ xinh cho chị</h1>
+            <p class="desc">
+              Chị nói em làm chị bất ngờ đi, nên em ngồi làm cái này nè. Không
+              có gì ghê gớm đâu, chỉ mong chị bấm thử rồi cười một cái thôi.
+            </p>
+
+            <div class="start-wrap">
+              <button class="start-btn" id="startBtn" type="button">
+                chị bấm thử đi nè →
+              </button>
+            </div>
+
+            <div class="guide" id="guideBox">
+              <strong>💬 Chị thích ô nào thì bấm ô đó nè</strong>
+              Mỗi ô em giấu một đoạn chat nhỏ với một lời nhắn riêng cho chị.
+            </div>
+          </div>
+        </section>
+
+        <section class="moods" id="moodsWrap"></section>
+      </div>
+    </main>
 
     <script>
-      const photos = [
-        { src: "photo1.jpg", caption: "Tấm này nhìn có vibe thật sự" },
-        { src: "photo2.jpg", caption: "Ảnh này kiểu rất cuốn mắt" },
-        { src: "photo3.jpg", caption: "Một chiếc moment xinh xắn" },
+      const PASSWORD = "chị hân so cute";
+
+      const moods = [
         {
-          src: "photo4.jpg",
-          caption: "Tấm này nhìn vừa chill vừa nổi bật",
+          key: "tired",
+          accent: "accent-tired",
+          emoji: "🫶",
+          labelTop: "Có em ở đây",
+          title: "Khi chị hơi mệt",
+          subtitle: "Mở ô này nếu nay chị bị rút pin",
+          panelTitle: "Em để lại mấy dòng nè",
+          note: "Những lúc chị mệt, em chỉ muốn nhắc là chị nghỉ xíu cũng được. Không cần lúc nào cũng gồng đâu.",
+          secretTitle: "Em giấu cái này cho chị",
+          secretText:
+            "Nếu chị mở đúng ô này vào lúc đang oải thì coi như em đang gửi chị một cái xoa đầu online nha.",
+          chat: [
+            { sender: "future", text: "Nay chị mệt hong" },
+            { sender: "present", text: "Hơi hơi á :((" },
+            { sender: "future", text: "Vậy nghỉ xíu đi, đừng gồng quá" },
+            { sender: "future", text: "mệt thì mệt chứ chị vẫn xinh nha" },
+          ],
         },
         {
-          src: "photo5.jpg",
-          caption: "Em chọn tấm này vì thấy rất hợp đưa lên web",
+          key: "praised",
+          accent: "accent-praised",
+          emoji: "✨",
+          labelTop: "Có em ở đây",
+          title: "Khi chị cần được khen",
+          subtitle: "Mở ô này lúc chị muốn nghe câu gì đó dễ thương",
+          panelTitle: "Em để lại mấy dòng nè",
+          note: "Cái ô này em làm riêng cho những lúc chị cần được nhắc là mình vẫn rất đáng yêu và đáng quý.",
+          secretTitle: "Nói nhỏ với chị",
+          secretText:
+            "Lúc viết ô này em đã nghĩ chắc chị sẽ vừa đọc vừa cười rồi lại chọc em dẻo miệng cho coi.",
+          chat: [
+            { sender: "future", text: "Chị luôn là người sai ơi là sai" },
+            { sender: "present", text: "Chị sai gì vậy chèn" },
+            { sender: "future", text: "Sai đẹp giếu á chị uiii" },
+            {
+              sender: "future",
+              text: "Là Siêu Đẹp Gái",
+            },
+          ],
         },
         {
-          src: "photo6.jpg",
-          caption: "Tóm lại là chị khá photogenic đó",
+          key: "miss",
+          accent: "accent-miss",
+          emoji: "💌",
+          labelTop: "Có em ở đây",
+          title: "Khi chị muốn em xuất hiện",
+          subtitle: "Mở ô này nếu chị muốn có em nói chuyện một chút",
+          panelTitle: "Em để lại mấy dòng nè",
+          note: "Em để ô này ở đây để lỡ lúc nào chị muốn em xuất hiện thì bấm một cái là có liền.",
+          secretTitle: "Ô này em cố ý đó",
+          secretText:
+            "Thiệt ra em thích câu “xuất hiện nhiều chị mới nhớ em” lắm nên em đem bỏ vô đây luôn.",
+          chat: [
+            { sender: "future", text: "em có mặt nè" },
+            { sender: "present", text: "xuất hiện nhiều c mới nhớ em chứ 🥹" },
+            { sender: "future", text: "vậy em chăm xuất hiện hơn xíu nha" },
+            { sender: "future", text: "để chị khó quên em hơn một chút 😆" },
+          ],
+        },
+        {
+          key: "surprise",
+          accent: "accent-surprise",
+          emoji: "🎁",
+          labelTop: "Có em bày trò",
+          title: "Khi chị muốn bất ngờ",
+          subtitle: "Ô này là ô em bày trò nhiều nhất",
+          panelTitle: "Em để lại mấy dòng nè",
+          note: "Chị nói em làm chị bất ngờ đi, mà em không biết làm gì cho ngầu. Nên em ngồi làm cái này nè.",
+          secretTitle: "Em nói thiệt nè",
+          secretText:
+            "Bất ngờ lớn nhất chắc là em chịu ngồi làm mấy cái này chỉ để gửi cho chị thôi.",
+          chat: [
+            { sender: "future", text: "chị nói em làm chị bất ngờ đi" },
+            { sender: "present", text: "rồi em làm thiệt luôn hả 😆" },
+            { sender: "future", text: "thì em làm thiệt nè" },
+            {
+              sender: "future",
+              text: "chị bấm tới đây rồi thì coi như em lời rồi đó",
+            },
+          ],
         },
       ];
 
-      let currentIndex = 0;
-      const mainPhoto = document.getElementById("mainPhoto");
-      const mainCaption = document.getElementById("mainCaption");
-      const dots = document.getElementById("dots");
-      const thumbs = document.getElementById("thumbs");
-      const photoCount = document.getElementById("photoCount");
-      const letterModal = document.getElementById("letterModal");
-      const bgMusic = document.getElementById("bgMusic");
-      const musicToggle = document.getElementById("musicToggle");
-      let isMusicPlaying = false;
+      const lockScreen = document.getElementById("lockScreen");
+      const siteShell = document.getElementById("siteShell");
+      const passwordInput = document.getElementById("passwordInput");
+      const unlockBtn = document.getElementById("unlockBtn");
+      const lockError = document.getElementById("lockError");
+      const moodsWrap = document.getElementById("moodsWrap");
+      const startBtn = document.getElementById("startBtn");
+      const guideBox = document.getElementById("guideBox");
+      const resetBtn = document.getElementById("resetBtn");
 
-      bgMusic.volume = 0.45;
-
-      photoCount.textContent = `${photos.length} tấm`;
-
-      function renderDots() {
-        dots.innerHTML = "";
-        photos.forEach((_, index) => {
-          const dot = document.createElement("button");
-          dot.className = `dot ${index === currentIndex ? "active" : ""}`;
-          dot.onclick = () => showPhoto(index);
-          dots.appendChild(dot);
-        });
+      function normalizeText(value) {
+        return value.trim().toLowerCase();
       }
 
-      function renderThumbs() {
-        thumbs.innerHTML = "";
-        photos.slice(0, 5).forEach((photo, index) => {
-          const btn = document.createElement("button");
-          btn.className = "thumb";
-          btn.onclick = () => showPhoto(index);
-          btn.innerHTML = `
-          <img src="${photo.src}" alt="Ảnh ${index + 1}" />
-          <span>Ảnh ${index + 1}</span>
-        `;
-          thumbs.appendChild(btn);
-        });
-      }
-
-      function showPhoto(index) {
-        currentIndex = index;
-        mainPhoto.style.opacity = 0;
-        mainPhoto.style.transform = "scale(1.03)";
-        setTimeout(() => {
-          mainPhoto.src = photos[currentIndex].src;
-          mainCaption.textContent = photos[currentIndex].caption;
-          mainPhoto.style.opacity = 1;
-          mainPhoto.style.transform = "scale(1)";
-          renderDots();
-        }, 180);
-      }
-
-      function nextPhoto() {
-        showPhoto((currentIndex + 1) % photos.length);
-      }
-
-      function prevPhoto() {
-        showPhoto((currentIndex - 1 + photos.length) % photos.length);
-      }
-
-      function scrollToGallery() {
-        document
-          .getElementById("gallery")
-          .scrollIntoView({ behavior: "smooth" });
-      }
-
-      async function toggleMusic() {
-        try {
-          if (isMusicPlaying) {
-            bgMusic.pause();
-            isMusicPlaying = false;
-            musicToggle.textContent = "🎵 Bật nhạc";
-          } else {
-            await bgMusic.play();
-            isMusicPlaying = true;
-            musicToggle.textContent = "⏸️ Tắt nhạc";
-          }
-        } catch (error) {
-          alert(
-            "Không mở được nhạc. Bạn kiểm tra lại file song.mp3 nhé.",
-          );
+      function unlockSite() {
+        if (normalizeText(passwordInput.value) === PASSWORD) {
+          lockScreen.classList.add("hidden");
+          siteShell.classList.add("show");
+          lockError.textContent = "";
+          window.scrollTo({ top: 0, behavior: "instant" });
+          return;
         }
+        lockError.textContent = "Hình như chị gõ thiếu xíu rồi á 😆";
       }
 
-      function openLetter() {
-        letterModal.classList.add("show");
-        document.body.style.overflow = "hidden";
-      }
-
-      function hideLetter() {
-        letterModal.classList.remove("show");
-        document.body.style.overflow = "";
-      }
-
-      function closeLetter(event) {
-        if (event.target === letterModal) {
-          hideLetter();
-        }
-      }
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowRight") nextPhoto();
-        if (e.key === "ArrowLeft") prevPhoto();
-        if (e.key === "Escape") hideLetter();
+      unlockBtn.addEventListener("click", unlockSite);
+      passwordInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") unlockSite();
       });
 
-      function createHearts() {
-        const holder = document.getElementById("floatingHearts");
-        setInterval(() => {
-          const heart = document.createElement("div");
-          heart.className = "heart";
-          heart.textContent = Math.random() > 0.5 ? "❤" : "✦";
-          heart.style.left = Math.random() * 100 + "vw";
-          heart.style.fontSize = 14 + Math.random() * 18 + "px";
-          heart.style.animationDuration = 5 + Math.random() * 4 + "s";
-          holder.appendChild(heart);
-          setTimeout(() => heart.remove(), 9000);
-        }, 900);
+      function createBubbleRow(item, index) {
+        const row = document.createElement("div");
+        row.className = `bubble-row ${item.sender}`;
+        row.style.animationDelay = `${index * 0.08}s`;
+        const bubble = document.createElement("div");
+        bubble.className = `bubble ${item.sender}`;
+        bubble.textContent = item.text;
+        row.appendChild(bubble);
+        return row;
       }
 
-      renderDots();
-      renderThumbs();
-      createHearts();
+      function createMoodBlock(mood) {
+        const block = document.createElement("div");
+        block.className = "mood-block";
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `mood-btn ${mood.accent}`;
+        button.innerHTML = `
+          <div>
+            <div class="mood-label-top">${mood.emoji} ${mood.labelTop}</div>
+            <div class="mood-title">${mood.title}</div>
+            <div class="mood-subtitle">${mood.subtitle}</div>
+          </div>
+          <div class="heart-badge">🤍</div>
+        `;
+
+        const panel = document.createElement("div");
+        panel.className = "panel";
+        panel.innerHTML = `
+          <div class="panel-card">
+            <div class="panel-top ${mood.accent}">
+              <div class="panel-meta">✨ chị mở trúng ô: <strong>${mood.title}</strong></div>
+              <h2 class="panel-title">${mood.panelTitle}</h2>
+              <p class="panel-note">${mood.note}</p>
+            </div>
+            <div class="panel-body">
+              <div class="phone">
+                <div class="phone-notch"></div>
+                <div class="chat-wrap"></div>
+              </div>
+              <div class="secret">
+                <strong>${mood.secretTitle}</strong>
+                ${mood.secretText}
+              </div>
+              <button class="close-btn" type="button">chị xem xong rồi nè</button>
+            </div>
+          </div>
+        `;
+
+        const chatWrap = panel.querySelector(".chat-wrap");
+        mood.chat.forEach((item, index) =>
+          chatWrap.appendChild(createBubbleRow(item, index)),
+        );
+
+        const closeBtn = panel.querySelector(".close-btn");
+
+        button.addEventListener("click", () => {
+          const isOpen = panel.classList.contains("open");
+          document
+            .querySelectorAll(".panel.open")
+            .forEach((el) => el.classList.remove("open"));
+          document
+            .querySelectorAll(".mood-btn.active")
+            .forEach((el) => el.classList.remove("active"));
+          if (!isOpen) {
+            panel.classList.add("open");
+            button.classList.add("active");
+          }
+        });
+
+        closeBtn.addEventListener("click", () => {
+          panel.classList.remove("open");
+          button.classList.remove("active");
+        });
+
+        block.appendChild(button);
+        block.appendChild(panel);
+        return block;
+      }
+
+      moods.forEach((mood) => moodsWrap.appendChild(createMoodBlock(mood)));
+
+      startBtn.addEventListener("click", () => {
+        startBtn.parentElement.style.display = "none";
+        guideBox.classList.add("show");
+        moodsWrap.classList.add("show");
+      });
+
+      resetBtn.addEventListener("click", () => {
+        guideBox.classList.remove("show");
+        moodsWrap.classList.remove("show");
+        startBtn.parentElement.style.display = "flex";
+        document
+          .querySelectorAll(".panel.open")
+          .forEach((el) => el.classList.remove("open"));
+        document
+          .querySelectorAll(".mood-btn.active")
+          .forEach((el) => el.classList.remove("active"));
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     </script>
   </body>
 </html>
